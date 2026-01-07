@@ -17,19 +17,16 @@ rect_image = pygame.transform.scale(rect_image, (120, 80))
 background_img = pygame.image.load("background1.jpg")
 background_img = pygame.transform.scale(background_img, (width, height))
 
-circle_x = r.randint(0, width)
 circle_y = 0
-circle_r = 30    
+circle_r = 30
+circle_x = r.randint(0, width-circle_r)    
 
-rect_h = 70
-rect_w = 70
+rect_h = rect_image.get_height()
+rect_w = rect_image.get_width()
 
-rect_x = r.randint(0, width - rect_w)
+rect_x = width/2 - rect_w/2
 rect_y = height - rect_h
 
-# --------------------
-# GAME VARIABLES
-# --------------------
 score = 0
 missed = 0
 level = 1
@@ -74,7 +71,7 @@ while open:
         missed += 1
         circle_x = r.randint(0, width - circle_r)
         circle_y = 0
-
+    
     screen.blit(background_img, (0, 0))
     screen.blit(rect_image, (rect_x, rect_y))
     screen.blit(circle, (circle_x, circle_y))
